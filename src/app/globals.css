@@ -5,6 +5,7 @@
   --foreground: #171717;
 }
 
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -23,4 +24,234 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.step-title {
+  margin-bottom: 16px;
+}
+
+.main-title {
+  margin: 0;
+}
+
+.sub-title {
+  margin-top: 18px;
+  margin-bottom: 0;
+}
+
+.gender-header {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 28px;
+}
+
+.gender-options {
+  position: relative;
+  z-index: 40;
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  width: 100%;
+  margin-top: 36px;
+}
+
+.gender-card {
+  position: relative;
+  width: 238px;
+  height: 310px;
+  border-radius: 32px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: linear-gradient(180deg, #151515 0%, #0c0c0c 100%);
+  overflow: hidden;
+  cursor: pointer;
+  padding: 28px;
+  text-align: left;
+  user-select: none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    transform 0.28s ease,
+    border-color 0.28s ease,
+    background 0.28s ease,
+    box-shadow 0.28s ease;
+}
+
+.gender-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(190, 255, 64, 0.45);
+}
+
+.gender-info {
+  position: absolute;
+  left: 28px;
+  top: 42px;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  pointer-events: none;
+}
+
+.gender-info,
+.gender-person {
+  pointer-events: none;
+}
+
+.male-card .gender-info {
+  left: auto !important;
+  right: 22px !important;
+  top: 42px !important;
+  align-items: flex-end;
+  text-align: right;
+}
+
+.gender-label {
+  font-size: 34px;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1;
+  margin-bottom: 20px;
+}
+
+.gender-symbol {
+  font-size: 46px;
+  color: rgba(255, 255, 255, 0.86);
+  line-height: 1;
+}
+
+.gender-person {
+  position: absolute;
+  right: 18px;
+  bottom: -10px;
+  height: 102%;
+  width: auto;
+  object-fit: contain;
+  z-index: 2;
+  pointer-events: none;
+  user-select: none;
+  transition:
+    opacity 0.32s ease,
+    filter 0.32s ease,
+    transform 0.32s ease;
+}
+
+.female-person {
+  right: -2px;
+}
+
+.male-person {
+  right: 12px;
+}
+
+.gender-card .gender-person {
+  opacity: 0.72;
+  filter: brightness(0.82) saturate(0.9);
+}
+
+.gender-card.selected {
+  border-color: rgba(190, 255, 64, 0.95);
+  background:
+    radial-gradient(circle at 70% 50%, rgba(190, 255, 64, 0.18), transparent 44%),
+    linear-gradient(180deg, #172006 0%, #0b0f06 100%);
+  box-shadow:
+    0 0 0 1px rgba(190, 255, 64, 0.22),
+    0 0 24px rgba(190, 255, 64, 0.24),
+    0 0 70px rgba(190, 255, 64, 0.14);
+}
+
+.gender-card.selected .gender-label,
+.gender-card.selected .gender-symbol {
+  color: #c8ff45;
+}
+
+.gender-card.selected .gender-person {
+  opacity: 1;
+  transform: scale(1.04);
+  filter:
+    brightness(1.12)
+    saturate(1.15)
+    drop-shadow(0 0 8px rgba(190, 255, 64, 0.55))
+    drop-shadow(0 0 22px rgba(190, 255, 64, 0.32))
+    drop-shadow(0 0 42px rgba(190, 255, 64, 0.18));
+}
+
+.gender-card.unselected {
+  border-color: rgba(255, 255, 255, 0.08);
+  background: linear-gradient(180deg, #111111 0%, #090909 100%);
+}
+
+.gender-card.unselected .gender-label,
+.gender-card.unselected .gender-symbol {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.gender-card.unselected .gender-person {
+  opacity: 0.3;
+  filter: grayscale(1) brightness(0.55) saturate(0.6);
+}
+
+@media (max-width: 768px) {
+  .gender-options {
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    margin-top: 8px;
+  }
+
+  .gender-card {
+    width: min(88vw, 390px);
+    height: 180px;
+    border-radius: 24px;
+    padding: 22px;
+  }
+
+  .gender-info {
+    left: 26px;
+    top: 44px;
+  }
+
+  .male-card .gender-info {
+    left: auto !important;
+    right: 26px !important;
+    top: 44px !important;
+    align-items: flex-end;
+    text-align: right;
+  }
+
+  .gender-label {
+    font-size: 38px;
+  }
+
+  .gender-symbol {
+    font-size: 48px;
+  }
+
+  .gender-person {
+    height: 88%;
+    bottom: 0;
+    width: auto;
+  }
+
+  .female-person {
+    right: 70px;
+  }
+
+  .male-person {
+    right: auto;
+    left: 70px;
+  }
+}
+
+.gender-card {
+  position: relative;
+  z-index: 50;
+  pointer-events: auto !important;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.gender-card * {
+  pointer-events: none !important;
 }
