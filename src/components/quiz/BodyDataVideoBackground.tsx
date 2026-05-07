@@ -12,6 +12,12 @@ export default function BodyDataVideoBackground() {
         loop
         playsInline
         preload="auto"
+        {...{
+          "webkit-playsinline": "true",
+          "x5-playsinline": "true",
+          "x5-video-player-type": "h5",
+          "x5-video-player-fullscreen": "false",
+        }}
       />
 
       <div className="absolute inset-0 bg-black/50" />
